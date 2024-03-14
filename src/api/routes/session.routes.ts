@@ -28,14 +28,14 @@ sessionRouter.post('/', async (req: Request, res: Response) => {
 
     // create a access token
     const accessToken = signJwt(
-        {...user, session: session.Id},
+        { session: session.Id},
         "accessTokenPrivateKey",
         {expiresIn: config.get("accessTokenTtl")}
     );
 
     // create a refresh token
     const refreshToken = signJwt(
-        {...user, session: session.Id},
+        { session: session.Id},
         "refreshTokenPrivateKey",
         {expiresIn: config.get("refreshTokenTtl")}
     );

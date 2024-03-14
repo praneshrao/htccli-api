@@ -1,4 +1,5 @@
 import express from "express";
+import helmet from "helmet";
 import config from "config";
 import connect from "./utils/connect";
 import logger from "./utils/logger";
@@ -10,6 +11,9 @@ import routes from "./api/routes";
 
 const port = config.get<number>('serverPort');
 const app = express();
+
+//use helmet
+app.use(helmet());
 
 app.use(express.json());
 

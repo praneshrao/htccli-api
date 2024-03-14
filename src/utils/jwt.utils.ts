@@ -1,18 +1,21 @@
 import jwt from "jsonwebtoken";
 import config from "config";
+import fs from "fs"
 
 export function signJwt(
   object: Object,
   keyName: "accessTokenPrivateKey" | "refreshTokenPrivateKey",
   options?: jwt.SignOptions | undefined
 ) {
-  /* const signingKey = Buffer.from(
-    config.get<string>(keyName),
-    "base64"
-  ).toString("ascii"); */
 
-  const signingKey = config.get<string>(keyName);
-
+  //const signingKey = config.get<string>(keyName);
+  let signingKey: any = ""
+  if (keyName == "accessTokenPrivateKey") {
+     signingKey = fs.readFileSync("./certs/private.pem")
+  } else {
+    signingKey = fs.readFileSync("./certs/private_refresh.pem")
+  }
+  
   return jwt.sign(object, signingKey, {
     ...(options && options),
     algorithm: "RS256",
@@ -23,11 +26,14 @@ export function verifyJwt(
   token: string,
   keyName: "accessTokenPublicKey" | "refreshTokenPublicKey"
 ) {
-/*   const publicKey = Buffer.from(config.get<string>(keyName), "base64").toString(
-    "ascii"
-  ); */
 
-  const publicKey = config.get<string>(keyName);
+  //const publicKey = config.get<string>(keyName);
+  let publicKey: any = ""
+  if (keyName == "accessTokenPublicKey") {
+    publicKey = fs.readFileSync("./certs/private.pem")
+ } else {
+  publicKey = fs.readFileSync("./certs/private_refresh.pem")
+ }
 
   try {
     const decoded = jwt.verify(token, publicKey);
