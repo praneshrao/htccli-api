@@ -5,11 +5,11 @@ export const create = async (payload: UserInput): Promise<UserOutput> => {
     return userDAL.create(payload)
 }
 
-export const update = async (id: number, payload: Partial<UserInput>): Promise<UserOutput> => {
+export const update = async (id: string, payload: Partial<UserInput>): Promise<UserOutput> => {
     return userDAL.update(id, payload);
 }
 
-export const getById = async (id: number): Promise<UserOutput> => {
+export const getById = async (id: string): Promise<UserOutput> => {
     return userDAL.getById(id);
 }
 

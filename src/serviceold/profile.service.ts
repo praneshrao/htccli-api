@@ -15,7 +15,6 @@ export const getProfileById = async (id: string) => {
         return profile;
     } catch (err: any) {
         logger.error("Profile not found", err)
-        throw new Error(err);
     }
 }
 
@@ -28,7 +27,7 @@ export async function createProfile(req: Request, res: Response) {
         return profile;
     } catch(err: any) {
         await t.rollback();
-        logger.error(err);
+        logger.error("Profile not created");
         return null;
     }
 }
@@ -57,8 +56,7 @@ export async function updateProfile(profileId: any, update: any) {
         return profile.save();
        });
     } catch(err: any) {
-        logger.error(err);
-        throw new Error(err);
+        logger.error("Profile not updated");
     }
 }
 

@@ -8,12 +8,23 @@ import swaggerDocs from "./utils/swagger";
 import { startMetricsServer } from "./utils/metrics";
 import  deserializeUser from "./middleware/deserializeUser";
 import routes from "./api/routes";
+import cors from "cors";
 
 const port = config.get<number>('serverPort');
 const app = express();
 
 //use helmet
 app.use(helmet());
+
+// Define the CORS options
+const corsOptions = {
+  credentials: true,
+  origin: 'http://127.0.0.1:5173', 
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]
+};
+
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

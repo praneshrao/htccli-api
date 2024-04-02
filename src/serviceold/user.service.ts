@@ -15,7 +15,6 @@ export async function getUsers() {
         return omit(users,"PasswordHash");
     } catch(err: any) {
         logger.error("Users not found", err)
-        throw new Error(err);
     }
 }
 
@@ -30,7 +29,6 @@ export const getUserById = async (id: string) => {
         return omit(user,"PasswordHash");
     } catch (err: any) {
         logger.error("User not found", err)
-        throw new Error(err);
     }
 }
 
@@ -45,7 +43,6 @@ export async function createUser(req: Request, res: Response) {
         await t.rollback();
         logger.error(err);
         return null;
-        //throw new Error(err);
     }
 }
 
@@ -69,8 +66,7 @@ export async function findandupdateUser(userId: any, update: any) {
             return user.save();
        });
     } catch(err: any) {
-        logger.error(err);
-        throw new Error(err);
+        logger.error("User not created");
     }
 }
  
@@ -85,7 +81,6 @@ export async function deleteUser(userId: any) {
         });
     } catch (err: any) {
         logger.error('User not Deleted');
-       throw new Error(err);
     }
 }
 
@@ -101,21 +96,24 @@ export async function resetPassword(userId: any, update: any) {
             return user.save();
        });
     } catch(err: any) {
-        logger.error(err);
-        throw new Error(err);
+        logger.error("Unable to reset the password");
     }
 }
 
 // Validate Password
 export async function validatePassword({email, password}:{email: string, password: string}) {
-    const user = await UserModel.findOne({ where: { Email: email } });
+    try {
+        const user = await UserModel.findOne({ where: { Email: email } });
 
-    if (user === null) {
-        return false;
-    }
+        if (user === null) {
+            return false;
+        }
 
-    if (await bcrypt.compare(password, user.PasswordHash)) {
-        return user.toJSON();
+        if (await bcrypt.compare(password, user.PasswordHash)) {
+            return user.toJSON();
+        }
+    } catch(err) {
+        return null;
     }
     return null;
 }

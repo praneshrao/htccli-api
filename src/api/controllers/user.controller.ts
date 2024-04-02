@@ -6,11 +6,11 @@ export const create = async(payload: CreateUserDTO): Promise<IUser> => {
     return await service.create(payload);
 }
 
-export const update = async (id: number, payload: UpdateUserDTO): Promise<IUser> => {
+export const update = async (id: string, payload: UpdateUserDTO): Promise<IUser> => {
     return await service.update(id, payload);
 }
 
-export const getById = async (id: number): Promise<IUser> => {
+export const getById = async (id: string): Promise<IUser> => {
     return await service.getById(id);
 }
 

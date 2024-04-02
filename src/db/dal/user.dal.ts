@@ -6,7 +6,7 @@ export const create = async (payload: UserInput): Promise<UserOutput> => {
 }
 
 // Use it for any kind of update calls (PasswordReset)
-export const update = async (id: number, payload: Partial<UserInput>): Promise<UserOutput> => {
+export const update = async (id: string, payload: Partial<UserInput>): Promise<UserOutput> => {
     const user = await User.findByPk(id);
     if (!user) {
         throw new Error('User Not Found');
@@ -14,7 +14,7 @@ export const update = async (id: number, payload: Partial<UserInput>): Promise<U
     return user.update(payload);
 }
 
-export const getById = async (id: number): Promise<UserOutput> => {
+export const getById = async (id: string): Promise<UserOutput> => {
     const user = await User.findByPk(id)
     if (!user) {
         throw new Error('User Not Found')

@@ -1,7 +1,7 @@
 import { Router, Request, Response} from 'express'
 import * as sessionController from '../controllers/session.controller';
 import { CreateSessionDTO, UpdateSessionDTO, DeleteSessionDTO } from '../dto/session.dto';
-import { validatePassword } from '../../service/user.service';
+import { validatePassword } from '../../serviceold/user.service';
 import { signJwt } from '../../utils/jwt.utils';
 import config from 'config';
 import dayjs from 'dayjs';
@@ -9,9 +9,12 @@ import dayjs from 'dayjs';
 const sessionRouter = Router();
 
 sessionRouter.post('/', async (req: Request, res: Response) => {
+    if (req.body == null) {
+        return res.status(401).send("Invalid email or password");
+    }
     const user = await validatePassword(req.body);
     if (!user || user === null) {
-        return res.status(401).send("Invalid email or password");
+        return res.status(400).send("Invalid email or password");
     }
 
     let payload:CreateSessionDTO = {
@@ -41,15 +44,19 @@ sessionRouter.post('/', async (req: Request, res: Response) => {
     );
 
     // return access and refresh tokens
-    return res.send({accessToken, refreshToken});
+    return res.send({session: session.Id, accessToken, refreshToken});
 })
 
 sessionRouter.get('/:id', async (req: Request, res: Response) => {
     const id = req.params.id;
     const valid = true;
+    try {
+        const result = await sessionController.getById(id, valid)
+        return res.status(200).send(result);
+    } catch(error: any) {
+        return res.status(404).send("No Data Found");
+    }
 
-    const result = await sessionController.getById(id, valid)
-    return res.status(200).send(result);
 });
 
 sessionRouter.delete('/:id', async (req: Request, res: Response) => {
@@ -63,7 +70,7 @@ sessionRouter.delete('/:id', async (req: Request, res: Response) => {
     }
     const result = await sessionController.remove(id, payload)
     if (!result) {
-        return res.status(401).send("Session not found");
+        return res.status(404).send("Session not found");
     }
     return res.send({
         accessToken: null,

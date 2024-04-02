@@ -8,13 +8,15 @@ export function signJwt(
   options?: jwt.SignOptions | undefined
 ) {
 
-  //const signingKey = config.get<string>(keyName);
+ //const signingKey = config.get<string>(keyName);
   let signingKey: any = ""
   if (keyName == "accessTokenPrivateKey") {
      signingKey = fs.readFileSync("./certs/private.pem")
   } else {
     signingKey = fs.readFileSync("./certs/private_refresh.pem")
   }
+
+  //console.log("SigningKey - ", signingKey)
   
   return jwt.sign(object, signingKey, {
     ...(options && options),
@@ -27,7 +29,7 @@ export function verifyJwt(
   keyName: "accessTokenPublicKey" | "refreshTokenPublicKey"
 ) {
 
-  //const publicKey = config.get<string>(keyName);
+//const publicKey = config.get<string>(keyName);
   let publicKey: any = ""
   if (keyName == "accessTokenPublicKey") {
     publicKey = fs.readFileSync("./certs/private.pem")

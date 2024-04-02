@@ -15,7 +15,6 @@ export const getScheduleById = async (id: string) => {
         return schedule;
     } catch (err: any) {
         logger.error("Schedule not found", err)
-        throw new Error(err);
     }
 }
 
@@ -28,7 +27,7 @@ export async function createSchedule(req: Request, res: Response) {
         return schedule;
     } catch(err: any) {
         await t.rollback();
-        logger.error(err);
+        logger.error("Schedule not created");
         return null;
     }
 }
@@ -44,8 +43,7 @@ export async function updateSchedule(Id: any, update: any) {
         return schedule.save();
        });
     } catch(err: any) {
-        logger.error(err);
-        throw new Error(err);
+        logger.error("Schedule not updated");
     }
 }
 

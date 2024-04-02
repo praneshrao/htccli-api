@@ -42,6 +42,8 @@ export async function reIssueAccessToken({
 
     const { decoded } = verifyJwt(refreshToken, "refreshTokenPublicKey");
 
+    console.log("Decoded - ",decoded);
+
     if (!decoded || !get(decoded, "session")) return false;  
 
     const session = await SessionModel.findByPk(get(decoded, "session"));  
@@ -55,7 +57,8 @@ export async function reIssueAccessToken({
     if (!user) return false;  
 
     const accessToken = signJwt(
-      { ...user, session: session.getDataValue("Id") },
+//      { ...user, session: session.getDataValue("Id") },
+        { session: session.getDataValue("Id") },
       "accessTokenPrivateKey",
       { expiresIn: config.get("accessTokenTtl") } // 15 minutes
     );

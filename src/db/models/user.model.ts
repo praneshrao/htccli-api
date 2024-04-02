@@ -108,7 +108,7 @@ Id: {
     sequelize: db,
     freezeTableName: true, 
     timestamps: false,
-    tableName: "AspNetUser",
+    tableName: "AspNetUsers",
     hooks: {
         beforeCreate: (async (user: any) => {
             user.Id = await getNextUUID();  

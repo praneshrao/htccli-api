@@ -7,30 +7,47 @@ import { CreateUserInput, UpdateUserInput, createUserSchema, updateUserSchema } 
 const _router = Router();
 
 _router.get('/:id',  async (req:Request, res:Response) => {
-    const id = Number(req.params.id);
-
-    const result = await userController.getById(id);
-    return res.status(200).send(result);
+    const id = String(req.params.id);
+    try {
+        const result = await userController.getById(id);
+        return res.status(200).send(result);
+    } catch(error: any) {
+        return res.status(404).send("No Data Found");
+    }
+ 
 });
 
 _router.put('/:Id', validateResource(updateUserSchema), async (req: Request<UpdateUserInput["params"]>, res: Response) => {
-    const id = Number(req.params.Id);
+    const id = String(req.params.Id);
     const payload:UpdateUserDTO = req.body
-    
-    const result = await userController.update(id, payload)
-    return res.status(201).send(result)
+    try{
+        const result = await userController.update(id, payload)
+        return res.status(201).send(result)
+    } catch(error: any) {
+        return res.status(400).send("Data not updated");
+    }
+
 })
 
 _router.post('/', validateResource(createUserSchema), async (req: Request<{},CreateUserInput["body"]>, res: Response) => {
     const payload:CreateUserDTO = req.body
-
-    const result = await userController.create(payload)
-    return res.status(201).send(result)
+    try {
+        const result = await userController.create(payload)
+        return res.status(201).send(result)
+    } catch(error: any) {
+        return res.status(400).send("Data not created");
+    }
+ 
 })
 
 _router.get('/', async (req: Request, res: Response) => {
-    const results = await userController.getAll();
-    return res.status(200).send(results)
+    try {
+        const results = await userController.getAll();
+        return res.status(200).send(results)
+    } catch(error: any) {
+        return res.status(404).send("Data not found");
+    }
+
 })
 
 export default _router;
