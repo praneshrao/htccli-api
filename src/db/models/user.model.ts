@@ -3,23 +3,7 @@ import db from "../../utils/connect";
 import { getNextUUID } from '../helpers';
 import bcrypt from "bcrypt";
 import config from "config";
-
-interface userAttributes {
-    Id: string
-    Email: string
-    EmailConfirmed: string
-    PasswordHash: string
-    SecurityStamp: string
-    PhoneNumber: string
-    PhoneNumberConfirmed: boolean
-    TwoFactorEnabled: boolean
-    LockoutEndDateUtc: string
-    LockoutEnabled: boolean
-    AccessFailedCount: number
-    UserName: string
-    createdAt: string
-    updatedAt: string
-}
+import { IUser as userAttributes } from '../../api/interfaces';
 
 export interface UserInput extends Optional<userAttributes, "Id"> {}
 export interface UserOutput extends Required<userAttributes> {}

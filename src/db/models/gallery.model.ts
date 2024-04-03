@@ -1,18 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface galleryAttributes {
-    Id: number
-    GalleryTypeId: number
-    Title: string
-    Description: string
-    Thumbnail: string
-    ImageFile: string
-    ImageURL: string
-    AlbumURL: string
-    Active: boolean
-}
+import { galleryAttributes } from '../../api/interfaces/gallery.interface';
 
 export interface GalleryInput extends Optional<galleryAttributes, 'Id'> {}
 export interface GalleryOutput extends Required<galleryAttributes> {}

@@ -1,12 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface dayTypeAttributes {
-    Id: number
-    DayTypeName: string
-    Active: boolean
-}
+import { dayTypeAttributes } from '../../api/interfaces/dayType.interface';
 
 export interface DayTypeInput extends Optional<dayTypeAttributes, 'Id'> {}
 export interface DayTypeOutput extends Required<dayTypeAttributes> {}

@@ -1,13 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface sponsorshipTypeAttributes {
-    Id: number
-    SponsorshipType: string
-    Amount: number
-    Active: boolean
-}
+import { sponsorshipTypeAttributes } from '../../api/interfaces/sponsorshipType.interface';
 
 export interface SponsorshipTypeInput extends Optional<sponsorshipTypeAttributes, 'Id'> {}
 export interface SponsorshipTypeOutput extends Required<sponsorshipTypeAttributes> {}

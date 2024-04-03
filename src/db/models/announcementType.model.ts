@@ -1,12 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface announcementTypeAttributes {
-    Id: number
-    AnnouncementTypeName: string
-    Active: boolean
-}
+import { announcementTypeAttributes } from '../../api/interfaces/announcementType.interface';
 
 export interface AnnouncementTypeInput extends Optional<announcementTypeAttributes, 'Id'> {}
 export interface AnnouncementTypeOutput extends Required<announcementTypeAttributes> {}

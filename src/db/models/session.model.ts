@@ -1,15 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextUUID } from '../helpers';
-
-interface sessionAttributes {
-    Id: string
-    UserId: string
-    UserAgent: string
-    Valid: boolean
-    createdAt: string
-    updatedAt: string
-}
+import { ISession as sessionAttributes } from '../../api/interfaces';
 
 export interface SessionInput extends Optional<sessionAttributes, "Id"> {}
 export interface SessionOutput extends Required<sessionAttributes> {}

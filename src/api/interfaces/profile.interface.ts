@@ -1,6 +1,4 @@
-
-
-export interface IProfile {
+export interface profileAttributes {
     Id: number
     TempleName: string
     TempleShortName: string

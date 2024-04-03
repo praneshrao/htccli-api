@@ -1,25 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface eventAttributes {
-    Id: number
-    EventTypeId: number
-    EventName: string
-    ShortDesc: string
-    LongDesc: string
-    StartDate: string
-    EndDate: string
-    Duration: string
-    FlyerLink: string
-    RequireSponsorship: boolean
-    Featured: boolean
-    Readmore: boolean
-    ExternalURL: string
-    RecurrenceTypeId: number
-    ImageFile: string
-    Active: boolean
-}
+import { eventAttributes } from '../../api/interfaces/event.interface';
 
 export interface EventInput extends Optional<eventAttributes, 'Id'> {}
 export interface EventOutput extends Required<eventAttributes> {}

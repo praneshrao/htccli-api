@@ -1,12 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface feeFreqencyAttributes {
-    Id: number
-    Frequency: string
-    Active: boolean
-}
+import { feeFreqencyAttributes } from '../../api/interfaces/feesFrequency.interface';
 
 export interface FeeFrequencyInput extends Optional<feeFreqencyAttributes, 'Id'> {}
 export interface FeeFrequencyeOutput extends Required<feeFreqencyAttributes> {}

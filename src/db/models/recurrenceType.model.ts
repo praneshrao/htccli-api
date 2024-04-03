@@ -1,12 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface recurrenceTypeAttributes {
-    Id: number
-    ReccurenceName: string
-    Active: boolean
-}
+import { recurrenceTypeAttributes } from '../../api/interfaces/recurrenceType.interface';
 
 export interface RecurrenceTypeInput extends Optional<recurrenceTypeAttributes, 'Id'> {}
 export interface RecurrenceTypeOutput extends Required<recurrenceTypeAttributes> {}

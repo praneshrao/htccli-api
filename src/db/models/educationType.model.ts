@@ -1,12 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface educationTypeAttributes {
-    Id: number
-    EducationTypeName: string
-    Active: boolean
-}
+import { educationTypeAttributes } from '../../api/interfaces/educationType.interface';
 
 export interface EducationTypeInput extends Optional<educationTypeAttributes, 'Id'> {}
 export interface EducationTypeOutput extends Required<educationTypeAttributes> {}

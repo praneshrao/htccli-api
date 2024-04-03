@@ -1,14 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface timingAttributes {
-    Id: number
-    DayTypeId: number
-    DayName: string
-    Duration: string
-    Active: boolean
-}
+import { timingAttributes } from '../../api/interfaces/timing.interface';
 
 export interface TimingInput extends Optional<timingAttributes, 'Id'> {}
 export interface TimingOutput extends Required<timingAttributes> {}

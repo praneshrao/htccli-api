@@ -1,17 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface donationAttributes {
-    Id: number
-    DonationTypeId: number
-    DonationName: string
-    Description: string
-    MinAmount: number
-    MaxAmount: number
-    PayOnline: boolean
-    Active: boolean
-}
+import { donationAttributes } from '../../api/interfaces/donation.interface';
 
 export interface DonationInput extends Optional<donationAttributes, 'Id'> {}
 export interface DonationOutput extends Required<donationAttributes> {}

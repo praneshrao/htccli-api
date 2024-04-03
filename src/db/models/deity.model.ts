@@ -1,18 +1,12 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
+import { IDeity } from '../../api/interfaces/deity.interface'
 
-interface deityAttributes {
-    Id: number
-    DeityName: string
-    DeityImageFile: string
-    Active: boolean
-}
+export interface DeityInput extends Optional<IDeity, 'Id'> {}
+export interface DeityOutput extends Required<IDeity> {}
 
-export interface DeityInput extends Optional<deityAttributes, 'Id'> {}
-export interface DeityOutput extends Required<deityAttributes> {}
-
-class Deity extends Model<deityAttributes, DeityInput> implements deityAttributes {
+class Deity extends Model<IDeity, DeityInput> implements IDeity {
     public Id!: number
     public DeityName!: string
     public DeityImageFile!: string

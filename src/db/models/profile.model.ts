@@ -1,26 +1,7 @@
 import { DataTypes, Model, ModelStatic, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface profileAttributes {
-    Id: number
-    TempleName: string
-    TempleShortName: string
-    TempleLogo: string
-    TempleBanner: string
-    TempleDescription: string
-    Address1: string
-    City: string
-    State: string
-    ZipCode: string
-    PhoneNumber: string
-    EmailAddress: string
-    TaxID: string
-    WebsiteURL: string
-    Latitude: number
-    Longitude: number
-    PlusCode: string
-}
+import { profileAttributes } from '../../api/interfaces/profile.interface';
 
 export interface ProfileInput extends Optional<profileAttributes, "Id"> {}
 export interface ProfileOutput extends Required<profileAttributes> {}

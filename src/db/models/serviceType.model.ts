@@ -1,12 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface serviceTypeAttributes {
-    Id: number
-    ServiceTypeName: string
-    Active: boolean
-}
+import { serviceTypeAttributes } from '../../api/interfaces/serviceType.interface';
 
 export interface ServiceTypeInput extends Optional<serviceTypeAttributes, 'Id'> {}
 export interface ServiceTypeOutput extends Required<serviceTypeAttributes> {}

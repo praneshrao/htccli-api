@@ -1,16 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface evernDetailAttributes {
-    Id: number
-    EventId: number
-    Description: string
-    ShortDesc: string
-    StartDate: string
-    EndDate: string
-    Active: boolean
-}
+import { evernDetailAttributes } from '../../api/interfaces/eventDetails.interface';
 
 export interface EventDetailsInput extends Optional<evernDetailAttributes, 'Id'> {}
 export interface EventDetailsOutput extends Required<evernDetailAttributes> {}

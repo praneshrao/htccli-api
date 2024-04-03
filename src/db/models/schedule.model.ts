@@ -1,13 +1,7 @@
 import { DataTypes, Model, ModelStatic, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
-
-interface scheduleAttributes {
-    Id: number
-    Name: string
-    Time: string
-    Active: boolean
-}
+import { ISchedule as scheduleAttributes } from '../../api/interfaces';
 
 export interface ScheduleInput extends Optional<scheduleAttributes, "Id"> {}
 export interface ScheduleOutput extends Required<scheduleAttributes> {}
