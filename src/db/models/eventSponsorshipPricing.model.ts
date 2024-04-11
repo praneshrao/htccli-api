@@ -9,7 +9,7 @@ export interface EventSponsorshipOutput extends Required<eventSponsorshipAttribu
 class EventSponsorship extends Model<eventSponsorshipAttributes, EventSponsorshipInput> implements eventSponsorshipAttributes {
     public Id!: number
     public EventId!: number
-    public SponsorshipTypeId!: string
+    public SponsorshipTypeId!: number
     public Description!: string;
     public Amount!: number
     public Active!: boolean
@@ -25,7 +25,7 @@ EventSponsorship.init({
         allowNull: false
     },
     SponsorshipTypeId: {
-        type: DataTypes.STRING,
+        type: DataTypes.NUMBER,
         allowNull: false
     },
     Description: {

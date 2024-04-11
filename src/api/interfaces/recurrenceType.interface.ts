@@ -1,5 +1,5 @@
 export interface recurrenceTypeAttributes {
     Id: number
-    ReccurenceName: string
+    RecurrenceName: string
     Active: boolean
 }

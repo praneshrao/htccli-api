@@ -2,13 +2,13 @@ import { Optional } from "sequelize/types"
 
 export type CreatedonationDTO = {
     Id: number
-    DonationTypeID: number
+    DonationTypeId: number
     DonationName: string
     Description: string
     MinAmount: number
     MaxAmount: number
     PayOnline: boolean
-    Active: Boolean
+    Active: boolean
 }
 
 export type UpdateDonationDTO = Optional<CreatedonationDTO, 'Id'>

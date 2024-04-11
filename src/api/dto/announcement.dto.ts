@@ -2,7 +2,7 @@ import { Optional } from "sequelize/types"
 
 export type CreateAnnouncementDTO = {
     Id: number
-    AnnouncementTypeID: number
+    AnnouncementTypeId: number
     AnnouncementName: string
     ShortDesc: string
     LongDesc: string

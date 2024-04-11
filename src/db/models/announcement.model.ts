@@ -75,7 +75,7 @@ Announcement.init({
     sequelize: db,
     freezeTableName: true, 
     timestamps: false,
-    tableName: "Announcement",
+    tableName: "Announcements",
     hooks: {
         beforeCreate: (async (schedule: any) => {
         const nextId = await getNextId(Announcement);  

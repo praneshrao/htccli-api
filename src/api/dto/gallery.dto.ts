@@ -2,7 +2,7 @@ import { Optional } from "sequelize/types"
 
 export type CreateGalleryDTO = {
     Id: number
-    GalleryTypeID: number
+    GalleryTypeId: number
     Title: string
     Description: string
     Thumbnail: string

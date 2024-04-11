@@ -14,5 +14,5 @@ export const getById = async (id: number): Promise<AnnouncementOutput> => {
 }
 
 export const getAll = async (): Promise<AnnouncementOutput[]> => {
-    return Announcement.findAll()
+    return await _getAll<Announcement>(Announcement)
 }

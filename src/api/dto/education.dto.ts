@@ -3,7 +3,7 @@ import { Optional } from "sequelize/types"
 export type CreateEducationDTO = {
     Id: number
     FeeFrequencyId: number
-    EducationTypeID: number
+    EducationTypeId: number
     EducationName: string
     Description: string
     DayTime: string

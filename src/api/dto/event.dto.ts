@@ -2,7 +2,7 @@ import { Optional } from "sequelize/types"
 
 export type CreateEventDTO = {
     Id: number
-    EventTypeID: number
+    EventTypeId: number
     EventName: string
     ShortDesc: string
     LongDesc: string
@@ -10,6 +10,7 @@ export type CreateEventDTO = {
     EndDate: string
     Duration: string
     FlyerLink: string
+    Featured: boolean
     RequireSponsorship: boolean
     Readmore: boolean
     ExternalURL: string
