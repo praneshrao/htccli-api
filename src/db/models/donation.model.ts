@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { donationAttributes } from '../../api/interfaces/donation.interface';
+import DonationType from './donationType.model';
 
 export interface DonationInput extends Optional<donationAttributes, 'Id'> {}
 export interface DonationOutput extends Required<donationAttributes> {}
@@ -63,5 +64,7 @@ Donation.init({
         }),
     }
 });
+
+Donation.belongsTo(DonationType, {foreignKey: "DonationTypeID"})
 
 export default Donation;

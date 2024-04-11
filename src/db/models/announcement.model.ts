@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { announcementAttributes } from '../../api/interfaces/announcement.interface';
+import AnnouncementType from './announcementType.model';
 
 export interface AnnouncementInput extends Optional<announcementAttributes, 'Id'> {}
 export interface AnnouncementOutput extends Required<announcementAttributes> {}
@@ -83,5 +84,7 @@ Announcement.init({
         }),
     }
 });
+
+Announcement.belongsTo(AnnouncementType, { foreignKey: "AnnouncementTypeID"})
 
 export default Announcement;

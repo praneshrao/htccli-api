@@ -8,7 +8,7 @@ export interface EventTypeOutput extends Required<eventTypeAttributes> {}
 
 class EventType extends Model<eventTypeAttributes, EventTypeInput> implements eventTypeAttributes {
     public Id!: number
-    public EventTypeName!: string
+    public TypeName!: string
     public Active!: boolean
 }
 
@@ -17,7 +17,7 @@ EventType.init({
         type: DataTypes.NUMBER,
         allowNull: false
     },
-    EventTypeName: {
+    TypeName: {
         type: DataTypes.STRING,
         allowNull: false
     },

@@ -12,4 +12,4 @@ export type CreateGalleryDTO = {
     Active: boolean
 }
 
-export type UpdateAnnouncementDTO = Optional<CreateGalleryDTO, 'Id'>
+export type UpdateGalleryDTO = Optional<CreateGalleryDTO, 'Id'>

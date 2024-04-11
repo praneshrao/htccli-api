@@ -1,3 +1,5 @@
+import { eventTypeAttributes } from "./eventType.interface"
+
 export interface eventAttributes {
     Id: number
     EventTypeId: number
@@ -15,4 +17,5 @@ export interface eventAttributes {
     RecurrenceTypeId: number
     ImageFile: string
     Active: boolean
+    EventType: eventTypeAttributes
 }

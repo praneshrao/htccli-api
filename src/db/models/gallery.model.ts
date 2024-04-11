@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { galleryAttributes } from '../../api/interfaces/gallery.interface';
+import GalleryType from './galleryType.model';
 
 export interface GalleryInput extends Optional<galleryAttributes, 'Id'> {}
 export interface GalleryOutput extends Required<galleryAttributes> {}
@@ -69,5 +70,7 @@ Gallery.init({
         }),
     }
 });
+
+Gallery.belongsTo(GalleryType, { foreignKey: "GalleryTypeId"})
 
 export default Gallery;

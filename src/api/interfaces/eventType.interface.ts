@@ -1,5 +1,5 @@
 export interface eventTypeAttributes {
     Id: number
-    EventTypeName: string
+    TypeName: string
     Active: boolean
 }

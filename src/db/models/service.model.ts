@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { serviceAttributes } from '../../api/interfaces/service.interface';
+import ServiceType from './serviceType.model';
 
 export interface ServiceInput extends Optional<serviceAttributes, 'Id'> {}
 export interface ServiceOutput extends Required<serviceAttributes> {}
@@ -59,5 +60,7 @@ Service.init({
         }),
     }
 });
+
+Service.belongsTo(ServiceType, { foreignKey: "ServiceTypeId"})
 
 export default Service;

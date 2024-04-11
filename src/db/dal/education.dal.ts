@@ -1,5 +1,7 @@
 import Education, { EducationInput, EducationOutput } from '../models/education.model';
 import { getById as _getById, getAll as _getAll, create as _create, update as _update} from '../helpers';
+import EducationType from '../models/educationType.model';
+import FeeFrequency from '../models/feesFrequency.model';
 
 export const create = async (payload: EducationInput): Promise<EducationOutput> => {
     return await _create(Education, payload);
@@ -14,5 +16,19 @@ export const getById = async (id: number): Promise<EducationOutput> => {
 }
 
 export const getAll = async (): Promise<EducationOutput[]> => {
-    return Education.findAll()
+    const result = await Education.findAll({
+        include: [{
+            model: EducationType,
+            required: true
+        },
+        {
+            model: FeeFrequency,
+            required: true
+        }
+        ],
+        order: [
+            ['Id', 'DESC']
+        ]
+    });
+    return result;
 }

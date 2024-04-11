@@ -1,5 +1,6 @@
 import Timing, { TimingInput, TimingOutput } from '../models/timing.model';
 import { getById as _getById, getAll as _getAll, create as _create, update as _update} from '../helpers';
+import DayType from '../models/dayType.model';
 
 export const create = async (payload: TimingInput): Promise<TimingOutput> => {
     return await _create(Timing, payload);
@@ -14,5 +15,14 @@ export const getById = async (id: number): Promise<TimingOutput> => {
 }
 
 export const getAll = async (): Promise<TimingOutput[]> => {
-    return Timing.findAll()
+    const result = await Timing.findAll({
+        include: [{
+            model: DayType,
+            required: true
+        }],
+        order: [
+            ['Id', 'DESC']
+        ]
+    });
+    return result;
 }

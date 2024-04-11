@@ -2,15 +2,17 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { educationAttributes } from '../../api/interfaces/education.interface';
+import EducationType from './educationType.model';
+import FeeFrequency from './feesFrequency.model';
 
 export interface EducationInput extends Optional<educationAttributes, 'Id'> {}
 export interface EducationOutput extends Required<educationAttributes> {}
 
 class Education extends Model<educationAttributes, EducationInput> implements educationAttributes {
     public Id!: number
-    public FeeFrequencyId!: number
-    public EducationTypeId!: number
-    public EducationName!: string
+    public FeesFrequencyID!: number
+    public EducationTypeID!: number
+    public ProgramName!: string
     public Description!: string
     public DayTime!: string
     public ImageFile!: string
@@ -24,7 +26,7 @@ Education.init({
         type: DataTypes.NUMBER,
         allowNull: false
     },
-    FeeFrequencyId: {
+    FeesFrequencyID: {
         type: DataTypes.NUMBER,
         allowNull: false
     },
@@ -32,7 +34,7 @@ Education.init({
         type: DataTypes.NUMBER,
         allowNull: false
     },
-    EducationName: {
+    ProgramName: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -73,5 +75,8 @@ Education.init({
         }),
     }
 });
+
+Education.belongsTo(EducationType, { foreignKey: "EducationTypeID"})
+Education.belongsTo(FeeFrequency, {foreignKey: "FeesFrequencyID"})
 
 export default Education;

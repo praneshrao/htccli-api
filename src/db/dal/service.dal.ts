@@ -1,5 +1,6 @@
 import Service, { ServiceInput, ServiceOutput } from '../models/service.model';
 import { getById as _getById, getAll as _getAll, create as _create, update as _update} from '../helpers';
+import ServiceType from '../models/serviceType.model';
 
 export const create = async (payload: ServiceInput): Promise<ServiceOutput> => {
     return await _create(Service, payload);
@@ -14,5 +15,14 @@ export const getById = async (id: number): Promise<ServiceOutput> => {
 }
 
 export const getAll = async (): Promise<ServiceOutput[]> => {
-    return Service.findAll()
+    const result = await Service.findAll({
+        include: [{
+            model: ServiceType,
+            required: true
+        }],
+        order: [
+            ['Id', 'DESC']
+        ]
+    });
+    return result;
 }

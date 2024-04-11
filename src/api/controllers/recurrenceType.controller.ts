@@ -1,5 +1,5 @@
 import * as service from "../../db/services/recurrenceType.service";
-import { CreateRecurrenceTypeDTO as CreateDTO, UpdateRecurrenceTypeDTO as UpdateDTO } from "../dto/recurrencType.dto";
+import { CreateRecurrenceTypeDTO as CreateDTO, UpdateRecurrenceTypeDTO as UpdateDTO } from "../dto/recurrenceType.dto";
 import { recurrenceTypeAttributes as T} from "../interfaces";
 
 export const create = async(payload: CreateDTO): Promise<T> => {

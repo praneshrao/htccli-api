@@ -1,5 +1,6 @@
 import Event, { EventInput, EventOutput } from '../models/event.model'
 import { getById as _getById, getAll as _getAll, create as _create, update as _update} from '../helpers';
+import EventType from '../models/eventType.model';
 
 export const create = async (payload: EventInput): Promise<EventOutput> => {
     return await _create(Event, payload);
@@ -14,5 +15,14 @@ export const getById = async (id: number): Promise<EventOutput> => {
 }
 
 export const getAll = async (): Promise<EventOutput[]> => {
-    return Event.findAll()
+    const result = await Event.findAll({
+        include: [{
+            model: EventType,
+            required: true
+        }],
+        order: [
+            ['Id', 'DESC']
+        ]
+    });
+    return result;
 }

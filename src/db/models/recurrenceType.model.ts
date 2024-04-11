@@ -8,7 +8,7 @@ export interface RecurrenceTypeOutput extends Required<recurrenceTypeAttributes>
 
 class RecurrenceType extends Model<recurrenceTypeAttributes, RecurrenceTypeInput> implements recurrenceTypeAttributes {
     public Id!: number
-    public ReccurenceName!: string
+    public RecurrenceName!: string
     public Active!: boolean
 }
 

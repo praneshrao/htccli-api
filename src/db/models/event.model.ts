@@ -2,6 +2,8 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { eventAttributes } from '../../api/interfaces/event.interface';
+import { eventTypeAttributes } from '../../api/interfaces';
+import EventType from './eventType.model';
 
 export interface EventInput extends Optional<eventAttributes, 'Id'> {}
 export interface EventOutput extends Required<eventAttributes> {}
@@ -23,6 +25,7 @@ class Event extends Model<eventAttributes, EventInput> implements eventAttribute
     public RecurrenceTypeId!: number
     public ImageFile!: string
     public Active!: boolean
+    public EventType!: eventTypeAttributes
 }
 
 Event.init({
@@ -103,5 +106,7 @@ Event.init({
         }),
     }
 });
+
+Event.belongsTo(EventType, { foreignKey: "EventTypeId"})
 
 export default Event;

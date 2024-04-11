@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { eventSponsorshipAttributes } from '../../api/interfaces/eventSponsorshipPricing.interface';
+import SponsorshipType from './sponsorshipType.model';
 
 export interface EventSponsorshipInput extends Optional<eventSponsorshipAttributes, 'Id'> {}
 export interface EventSponsorshipOutput extends Required<eventSponsorshipAttributes> {}
@@ -53,5 +54,7 @@ EventSponsorship.init({
         }),
     }
 });
+
+EventSponsorship.belongsTo(SponsorshipType, { foreignKey: "SponsorshipTypeId"})
 
 export default EventSponsorship;

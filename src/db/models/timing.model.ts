@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import db from "../../utils/connect";
 import { getNextId } from '../helpers';
 import { timingAttributes } from '../../api/interfaces/timing.interface';
+import DayType from './dayType.model';
 
 export interface TimingInput extends Optional<timingAttributes, 'Id'> {}
 export interface TimingOutput extends Required<timingAttributes> {}
@@ -48,5 +49,7 @@ Timing.init({
         }),
     }
 });
+
+Timing.belongsTo(DayType, { foreignKey: "DayTypeId"})
 
 export default Timing;

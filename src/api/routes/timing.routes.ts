@@ -1,8 +1,8 @@
 import { Router, Request, Response} from 'express'
-import * as controller from "../controllers/announcement.controller";
-import { CreateAnnouncementDTO, UpdateAnnouncementDTO } from '../dto/announcement.dto';
+import * as controller from "../controllers/timing.controller";
+import { CreateTimingsDTO, UpdateTimingsTypeDTO } from '../dto/timings.dto';
 import validateResource from '../../middleware/validateResource';
-import { CreateInput, UpdateInput, createScheme, updateSchema } from '../../schema/announcement.schema';
+import { CreateInput, UpdateInput, createScheme, updateSchema } from '../../schema/timing.schema';
 
 const _router = Router();
 
@@ -19,7 +19,7 @@ _router.get('/:id',  async (req:Request, res:Response) => {
 
 _router.put('/:Id', validateResource(updateSchema), async (req: Request<UpdateInput["params"]>, res: Response) => {
     const id = Number(req.params.Id);
-    const payload:UpdateAnnouncementDTO = req.body
+    const payload:UpdateTimingsTypeDTO = req.body
     
     try {
         const result = await controller.update(id, payload)
@@ -30,7 +30,7 @@ _router.put('/:Id', validateResource(updateSchema), async (req: Request<UpdateIn
 })
 
 _router.post('/', validateResource(createScheme), async (req: Request<CreateInput["body"]>, res: Response) => {
-    const payload:CreateAnnouncementDTO = req.body
+    const payload:CreateTimingsDTO = req.body
 
     try {
         const result = await controller.create(payload)
@@ -44,8 +44,7 @@ _router.get('/', async (req: Request, res: Response) => {
     try {
         const results = await controller.getAll();
         return res.status(200).send(results)
-    } catch(error: any) {
-        console.log(error);
+    } catch(error: any ) {
         return res.status(404).send("Data not found");
     }
 })
