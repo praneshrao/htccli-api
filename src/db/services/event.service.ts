@@ -16,3 +16,7 @@ export const getById = async (id: number): Promise<EventOutput> => {
 export const getAll = async (): Promise<EventOutput[]> => {
     return dal.getAll();
 }
+
+export const getCount = async () => {
+    return await dal.getCount();
+}

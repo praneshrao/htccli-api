@@ -100,9 +100,9 @@ Event.init({
     timestamps: false,
     tableName: "Events",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (event: any) => {
         const nextId = await getNextId(Event);  
-        schedule.Id = nextId[0].Id+1;
+        event.Id = nextId[0].Id+1;
         }),
     }
 });

@@ -17,5 +17,4 @@ export interface eventAttributes {
     RecurrenceTypeId: number
     ImageFile: string
     Active: boolean
-    EventType: eventTypeAttributes
 }

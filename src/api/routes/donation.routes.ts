@@ -3,10 +3,11 @@ import * as controller from "../controllers/donation.controller";
 import { CreatedonationDTO, UpdateDonationDTO } from '../dto/donation.dto';
 import validateResource from '../../middleware/validateResource';
 import { CreateInput, UpdateInput, createScheme, updateSchema } from '../../schema/donation.schema';
+import requireUser from '../../middleware/requireUser';
 
 const _router = Router();
 
-_router.get('/:id',  async (req:Request, res:Response) => {
+_router.get('/:id', requireUser, async (req:Request, res:Response) => {
     const id = Number(req.params.id);
 
     try {
@@ -17,7 +18,7 @@ _router.get('/:id',  async (req:Request, res:Response) => {
     }
 });
 
-_router.put('/:Id', validateResource(updateSchema), async (req: Request<UpdateInput["params"]>, res: Response) => {
+_router.put('/:Id', requireUser, validateResource(updateSchema), async (req: Request<UpdateInput["params"]>, res: Response) => {
     const id = Number(req.params.Id);
     const payload:UpdateDonationDTO = req.body
     
@@ -29,7 +30,7 @@ _router.put('/:Id', validateResource(updateSchema), async (req: Request<UpdateIn
     }
 })
 
-_router.post('/', validateResource(createScheme), async (req: Request<CreateInput["body"]>, res: Response) => {
+_router.post('/', requireUser, validateResource(createScheme), async (req: Request<CreateInput["body"]>, res: Response) => {
     const payload:CreatedonationDTO = req.body
 
     try {
@@ -40,7 +41,7 @@ _router.post('/', validateResource(createScheme), async (req: Request<CreateInpu
     }
 })
 
-_router.get('/', async (req: Request, res: Response) => {
+_router.get('/', requireUser, async (req: Request, res: Response) => {
     try {
         const results = await controller.getAll();
         return res.status(200).send(results)

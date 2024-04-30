@@ -32,9 +32,9 @@ DayType.init({
     timestamps: false,
     tableName: "DayTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (dayType: any) => {
         const nextId = await getNextId(DayType);  
-        schedule.Id = nextId[0].Id+1;
+        dayType.Id = nextId[0].Id+1;
         }),
     }
 });

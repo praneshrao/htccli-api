@@ -32,3 +32,8 @@ export const getAll = async (): Promise<EducationOutput[]> => {
     });
     return result;
 }
+
+export const getCount = async () => {
+    const count = await Education.count();
+return count;
+}

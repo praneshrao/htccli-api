@@ -32,9 +32,9 @@ EventType.init({
     timestamps: false,
     tableName: "EventTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (eventType: any) => {
         const nextId = await getNextId(EventType);  
-        schedule.Id = nextId[0].Id+1;
+        eventType.Id = nextId[0].Id+1;
         }),
     }
 });

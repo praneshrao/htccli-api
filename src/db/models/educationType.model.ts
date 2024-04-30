@@ -32,9 +32,9 @@ EducationType.init({
     timestamps: false,
     tableName: "EducationTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (educationType: any) => {
         const nextId = await getNextId(EducationType);  
-        schedule.Id = nextId[0].Id+1;
+        educationType.Id = nextId[0].Id+1;
         }),
     }
 });

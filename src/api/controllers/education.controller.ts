@@ -17,3 +17,7 @@ export const getById = async (id: number): Promise<T> => {
 export const getAll = async(): Promise<T[]> => {
     return await service.getAll();
 }
+
+export const getCount = async () => {
+    return await service.getCount();
+}

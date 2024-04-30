@@ -101,9 +101,9 @@ Profile.init({
     timestamps: false,
     tableName: "TempleProfile",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (profile: any) => {
         const nextId = await getNextId(Profile);  
-        schedule.Id = nextId[0].Id+1;
+        profile.Id = nextId[0].Id+1;
         }),
     }
 });

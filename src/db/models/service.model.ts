@@ -54,9 +54,9 @@ Service.init({
     timestamps: false,
     tableName: "Services",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (service: any) => {
         const nextId = await getNextId(Service);  
-        schedule.Id = nextId[0].Id+1;
+        service.Id = nextId[0].Id+1;
         }),
     }
 });

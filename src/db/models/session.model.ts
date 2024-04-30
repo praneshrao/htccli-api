@@ -47,8 +47,8 @@ Session.init({
     timestamps: false,
     tableName: "AspNetUserSession",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
-        schedule.Id = await getNextUUID();  
+        beforeCreate: (async (session: any) => {
+        session.Id = await getNextUUID();  
         }),
     }
 });

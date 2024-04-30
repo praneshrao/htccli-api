@@ -43,9 +43,9 @@ Timing.init({
     timestamps: false,
     tableName: "Timings",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (timing: any) => {
         const nextId = await getNextId(Timing);  
-        schedule.Id = nextId[0].Id+1;
+        timing.Id = nextId[0].Id+1;
         }),
     }
 });

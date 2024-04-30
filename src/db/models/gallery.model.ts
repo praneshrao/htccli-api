@@ -64,9 +64,9 @@ Gallery.init({
     timestamps: false,
     tableName: "ImageGallery",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (gallery: any) => {
         const nextId = await getNextId(Gallery);  
-        schedule.Id = nextId[0].Id+1;
+        gallery.Id = nextId[0].Id+1;
         }),
     }
 });

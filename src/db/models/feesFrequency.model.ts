@@ -32,9 +32,9 @@ FeeFrequency.init({
     timestamps: false,
     tableName: "FeesFrequency",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (feesFrequency: any) => {
         const nextId = await getNextId(FeeFrequency);  
-        schedule.Id = nextId[0].Id+1;
+        feesFrequency.Id = nextId[0].Id+1;
         }),
     }
 });

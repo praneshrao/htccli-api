@@ -78,9 +78,9 @@ Announcement.init({
     timestamps: false,
     tableName: "Announcements",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (announcement: any) => {
         const nextId = await getNextId(Announcement);  
-        schedule.Id = nextId[0].Id+1;
+        announcement.Id = nextId[0].Id+1;
         }),
     }
 });

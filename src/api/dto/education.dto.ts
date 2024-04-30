@@ -2,9 +2,9 @@ import { Optional } from "sequelize/types"
 
 export type CreateEducationDTO = {
     Id: number
-    FeeFrequencyId: number
-    EducationTypeId: number
-    EducationName: string
+    FeesFrequencyID: number
+    EducationTypeID: number
+    ProgramName: string
     Description: string
     DayTime: string
     ValidUntilDate: string

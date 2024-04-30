@@ -1,7 +1,8 @@
 import Announcement, { AnnouncementInput, AnnouncementOutput} from '../models/announcement.model';
 import { getById as _getById, getAll as _getAll, create as _create, update as _update} from '../helpers';
-import { Model } from 'sequelize';
 import AnnouncementType from '../models/announcementType.model';
+import { col, fn } from 'sequelize';
+import logger from '../../utils/logger';
 
 export const create = async (payload: AnnouncementInput): Promise<AnnouncementOutput> => {
     return await _create(Announcement, payload);
@@ -30,5 +31,10 @@ export const getAll = async (): Promise<AnnouncementOutput[]> => {
         ]
     });
     return result;
+}
+
+export const getCount = async () => {
+        const count = await Announcement.count();
+    return count;
 }
  

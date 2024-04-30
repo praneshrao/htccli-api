@@ -32,9 +32,9 @@ DonationType.init({
     timestamps: false,
     tableName: "DonationTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (donationType: any) => {
         const nextId = await getNextId(DonationType);  
-        schedule.Id = nextId[0].Id+1;
+        donationType.Id = nextId[0].Id+1;
         }),
     }
 });

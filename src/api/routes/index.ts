@@ -30,6 +30,7 @@ const router = Router()
 router.use('/profile', profileRouter);
 router.use('/schedule', scheduleRouter);
 router.use('/session',sessionRouter);
+router.use('/session/refresh', serviceRouter);
 router.use('/user', userRouter);
 router.use('/deity', deityRouter);
 router.use('/healthcheck', healthcheckRouter);

@@ -16,3 +16,7 @@ export const getById = async (id: number): Promise<EducationOutput> => {
 export const getAll = async (): Promise<EducationOutput[]> => {
     return dal.getAll();
 }
+
+export const getCount = async () => {
+    return await dal.getCount();
+}

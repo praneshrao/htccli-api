@@ -9,6 +9,7 @@ import { startMetricsServer } from "./utils/metrics";
 import  deserializeUser from "./middleware/deserializeUser";
 import routes from "./api/routes";
 import cors from "cors";
+import ErrorHandler from "./middleware/errorHandler";
 
 const port = config.get<number>('serverPort');
 const app = express();
@@ -46,6 +47,15 @@ app.listen(port, async () => {
       //routes(app);
   
       app.use('/api/v1', routes)
+
+      app.all('*', (req, res, next) => {
+        const err: any = new Error(`Can't find ${req.originalUrl} on the server!`)
+        err.status = "failed";
+        err.statusCode = 404;
+        next(err);
+      });
+
+      app.use(ErrorHandler)
     
       //startMetricsServer();
 

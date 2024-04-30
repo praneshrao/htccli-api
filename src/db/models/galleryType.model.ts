@@ -32,9 +32,9 @@ GalleryType.init({
     timestamps: false,
     tableName: "GalleryTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (galleryType: any) => {
         const nextId = await getNextId(GalleryType);  
-        schedule.Id = nextId[0].Id+1;
+        galleryType.Id = nextId[0].Id+1;
         }),
     }
 });

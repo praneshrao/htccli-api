@@ -49,4 +49,13 @@ _router.get('/', async (req: Request, res: Response) => {
     }
 })
 
+_router.post('/count', async (req:Request, res: Response) => {
+    try {
+        const result = await controller.getCount();
+        return res.json(result);
+    }catch(error: any) {
+        return res.status(400).send("getCount - No data found - " + error)
+    }
+})
+
 export default _router;

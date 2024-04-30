@@ -32,9 +32,9 @@ RecurrenceType.init({
     timestamps: false,
     tableName: "RecurrenceTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (recurrenceType: any) => {
         const nextId = await getNextId(RecurrenceType);  
-        schedule.Id = nextId[0].Id+1;
+        recurrenceType.Id = nextId[0].Id+1;
         }),
     }
 });

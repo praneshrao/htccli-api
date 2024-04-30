@@ -32,9 +32,9 @@ ServiceType.init({
     timestamps: false,
     tableName: "ServiceTypes",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (serviceType: any) => {
         const nextId = await getNextId(ServiceType);  
-        schedule.Id = nextId[0].Id+1;
+        serviceType.Id = nextId[0].Id+1;
         }),
     }
 });

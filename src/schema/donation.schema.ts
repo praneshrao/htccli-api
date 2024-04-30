@@ -5,9 +5,9 @@ const payload = {
       DonationName: string({
         required_error: "Donation Name is required",
       }),
-      DonationTypeId: string({
+/*       DonationTypeId: string({
         required_error: "Donation Type Id is required"
-      })
+      }) */
     })
   }
 

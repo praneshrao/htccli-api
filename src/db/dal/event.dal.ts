@@ -26,3 +26,8 @@ export const getAll = async (): Promise<EventOutput[]> => {
     });
     return result;
 }
+
+export const getCount = async () => {
+    const count = await Event.count();
+return count;
+}

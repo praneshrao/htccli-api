@@ -69,9 +69,9 @@ Education.init({
     timestamps: false,
     tableName: "EducationPrograms",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (education: any) => {
         const nextId = await getNextId(Education);  
-        schedule.Id = nextId[0].Id+1;
+        education.Id = nextId[0].Id+1;
         }),
     }
 });

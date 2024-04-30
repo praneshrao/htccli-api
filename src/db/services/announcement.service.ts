@@ -2,17 +2,21 @@ import { AnnouncementInput, AnnouncementOutput } from '../models/announcement.mo
 import * as dal from "../dal/announcement.dal";
 
 export const create = async (payload: AnnouncementInput): Promise<AnnouncementOutput> => {
-    return dal.create(payload)
+    return await dal.create(payload)
 }
 
 export const update = async (id: number, payload: Partial<AnnouncementInput>): Promise<AnnouncementOutput> => {
-    return dal.update(id, payload);
+    return await dal.update(id, payload);
 }
 
 export const getById = async (id: number): Promise<AnnouncementOutput> => {
-    return dal.getById(id);
+    return await dal.getById(id);
 }
 
 export const getAll = async (): Promise<AnnouncementOutput[]> => {
-    return dal.getAll();
+    return await dal.getAll();
+}
+
+export const getCount = async () => {
+    return await dal.getCount();
 }

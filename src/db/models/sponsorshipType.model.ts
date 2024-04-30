@@ -37,9 +37,9 @@ SponsorshipType.init({
     timestamps: false,
     tableName: "EventSponsorshipType",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (sponsorshipType: any) => {
         const nextId = await getNextId(SponsorshipType);  
-        schedule.Id = nextId[0].Id+1;
+        sponsorshipType.Id = nextId[0].Id+1;
         }),
     }
 });

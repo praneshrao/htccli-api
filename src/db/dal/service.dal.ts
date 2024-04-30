@@ -26,3 +26,8 @@ export const getAll = async (): Promise<ServiceOutput[]> => {
     });
     return result;
 }
+
+export const getCount = async () => {
+    const count = await Service.count();
+return count;
+}

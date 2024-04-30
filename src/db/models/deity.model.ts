@@ -37,9 +37,9 @@ Deity.init({
     timestamps: false,
     tableName: "Deities",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (deity: any) => {
         const nextId = await getNextId(Deity);  
-        schedule.Id = nextId[0].Id+1;
+        deity.Id = nextId[0].Id+1;
         }),
     }
 });

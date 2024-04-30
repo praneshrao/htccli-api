@@ -8,8 +8,8 @@ const payload = {
       ShortDesc: string({
         required_error: "ShortDesc is required"
       }),
-      AnnoucementDate: string({
-        required_error: "Annoucement date is required"
+      AnnouncementDate: string({
+        required_error: "Announcement date is required"
       })
     })
   }

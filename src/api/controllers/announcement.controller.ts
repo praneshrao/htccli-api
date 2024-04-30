@@ -17,3 +17,7 @@ export const getById = async (id: number): Promise<announcementAttributes> => {
 export const getAll = async(): Promise<announcementAttributes[]> => {
     return await service.getAll();
 }
+
+export const getCount = async () => {
+    return await service.getCount();
+}

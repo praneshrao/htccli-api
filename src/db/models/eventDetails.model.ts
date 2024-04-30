@@ -52,9 +52,9 @@ EventDetails.init({
     timestamps: false,
     tableName: "EventDetails",
     hooks: {
-        beforeCreate: (async (schedule: any) => {
+        beforeCreate: (async (eventDetail: any) => {
         const nextId = await getNextId(EventDetails);  
-        schedule.Id = nextId[0].Id+1;
+        eventDetail.Id = nextId[0].Id+1;
         }),
     }
 })

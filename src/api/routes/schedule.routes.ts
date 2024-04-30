@@ -30,11 +30,12 @@ scheduleeRouter.put('/:Id', validateResource(updateScheduleSchema), async (req: 
 })
 
 scheduleeRouter.post('/', validateResource(createScheduleSchema), async (req: Request<{},CreateScheduleInput["body"]>, res: Response) => {
+    console.log(req.body);
     const payload:CreateScheduleDTO = req.body
     try {
         const result = await scheduleController.create(payload)
         return res.status(201).send(result)
-    } catch(error: any) {
+    } catch(error) {
         return res.status(400).send("Data not created");
     }
 
