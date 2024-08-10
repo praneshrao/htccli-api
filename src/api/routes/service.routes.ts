@@ -3,6 +3,7 @@ import * as controller from "../controllers/service.controller";
 import { CreateServicestDTO, UpdateServicesDTO } from '../dto/services.dto';
 import validateResource from '../../middleware/validateResource';
 import { CreateInput, UpdateInput, createScheme, updateSchema } from '../../schema/service.schema';
+import requireUser from '../../middleware/requireUser';
 
 const _router = Router();
 
@@ -20,6 +21,7 @@ _router.get('/:id',  async (req:Request, res:Response) => {
 _router.put('/:Id', validateResource(updateSchema), async (req: Request<UpdateInput["params"]>, res: Response) => {
     const id = Number(req.params.Id);
     const payload:UpdateServicesDTO = req.body
+    console.log("Payload - ", payload);
     
     try {
         const result = await controller.update(id, payload)

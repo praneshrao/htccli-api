@@ -1,14 +1,14 @@
 export default {
-    serverPort: 1330,
-    dbHost: "localhost",
+    //serverPort: 1330,
+/*     dbHost: "localhost",
     dbUserName: "SA",
     dbPassword: "Msb@11788",
     dbDatabase: "TempleDB",
-    dbPort: 1401,
+    dbPort: 1401, */
     saltWorkFactor: 10,
     accessTokenTtl: "15m",
     refreshTokenTtl: "1y",
-    refreshTokenPrivateKey: `-----BEGIN RSA PRIVATE KEY-----
+/*     refreshTokenPrivateKey: `-----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEAqPCFM9SZ/2ZFvYUNrDnTQJufHJOYHYQx0zOip/49CqhZqd36
 O+jpZkO3kbhhwEMg6+vNfveTN4GgzcJ2io8NVszp8q3A29BzO7wj5ZMYNnK+75y1
 HBLby4SqHZNWcQEtQ8DEZQH38F6Asy5QTk8GKfIAk9q4Le9O9w1zTF+HelT4HAR8
@@ -79,5 +79,13 @@ stwperhtQKMg2gm7+5DGsDavTqcTGK2iU4cuP/dT2NoZWi+ZEoNkby4+cBpyWWLY
 LVuvg4BGAALQcPyFtOlvW68S9XIJvRM5UDrZZRz6SA/4mnbSHWLCcAtz8tii1Ttt
 9MWd6czW09pjsOXk38gnjVCp08MiutyLV0gtjMsRSy9+MOs63NJiwELRaClWSKw5
 vQIDAQAB
------END PUBLIC KEY-----`,
+-----END PUBLIC KEY-----`, */
+/*   accessTokenPrivateKey: ``,
+  accessTokenPublicKey: ``,
+  refreshTokenPrivateKey: ``,
+  refreshTokenPublicKey: ``, */
+  accessTokenPrivateKey: "ACCESS_TOKEN_PRIVATE_KEY",
+  accessTokenPublicKey: "ACCESS_TOKEN_PUBLIC_KEY",
+  refreshTokenPrivateKey: "REFRESH_PRIVATE_KEY",
+  refreshTokenPublicKey: "REFRESH_PUBLIC_KEY",
 }

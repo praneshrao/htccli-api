@@ -2,7 +2,7 @@ import { Optional } from "sequelize/types"
 
 export type CreateServicestDTO = {
     Id: number
-    ServiceTypeId: number
+    ServiceTypeID: number
     ServiceName: string
     Description: string
     ServicePrice: number

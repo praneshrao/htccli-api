@@ -9,14 +9,15 @@ export function signJwt(
 ) {
 
  //const signingKey = config.get<string>(keyName);
-  let signingKey: any = ""
+/*    let signingKey: any = ""
   if (keyName == "accessTokenPrivateKey") {
      signingKey = fs.readFileSync("./certs/private.pem")
   } else {
     signingKey = fs.readFileSync("./certs/private_refresh.pem")
-  }
+  }  */
+  //console.log("Private Key - ", config.get<string>(keyName));
 
-  //console.log("SigningKey - ", signingKey)
+  const signingKey = Buffer.from(config.get<string>(keyName),"base64").toString("ascii");
   
   return jwt.sign(object, signingKey, {
     ...(options && options),
@@ -30,12 +31,15 @@ export function verifyJwt(
 ) {
 
 //const publicKey = config.get<string>(keyName);
-  let publicKey: any = ""
+/*   let publicKey: any = ""
   if (keyName == "accessTokenPublicKey") {
     publicKey = fs.readFileSync("./certs/private.pem")
  } else {
   publicKey = fs.readFileSync("./certs/private_refresh.pem")
- }
+ }  */
+ const publicKey = Buffer.from(config.get<string>(keyName), "base64").toString(
+  "ascii"
+);
 
   try {
     const decoded = jwt.verify(token, publicKey);

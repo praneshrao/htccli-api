@@ -1,13 +1,13 @@
-import { object, string, TypeOf } from "zod";
+import { number, object, string, TypeOf } from "zod";
 
 const payload = {
     body: object({
       EventName: string({
         required_error: "Event Name is required",
       }),
-      EventTypeId: string({
+/*        EventTypeID: string({
         required_error: "Event Type Id is required"
-      }),
+      }), */
       ShortDesc: string({
         required_error: "Description is required"
       }),

@@ -33,7 +33,7 @@ Event.init({
         type: DataTypes.NUMBER,
         allowNull: false
     },
-    EventTypeId: {
+    EventTypeID: {
         type: DataTypes.NUMBER,
         allowNull: false
     },
@@ -81,7 +81,7 @@ Event.init({
         type: DataTypes.STRING,
         allowNull: true
     },
-    RecurrenceTypeId: {
+    RecurrenceTypeID: {
         type: DataTypes.NUMBER,
         allowNull: false
     },

@@ -1,6 +1,6 @@
 export interface serviceAttributes {
     Id: number
-    ServiceTypeId: number
+    ServiceTypeID: number
     ServiceName: string
     Description: string
     ServicePrice: number

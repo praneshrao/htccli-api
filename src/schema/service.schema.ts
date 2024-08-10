@@ -2,9 +2,9 @@ import { object, string, TypeOf } from "zod";
 
 const payload = {
     body: object({
-      ServiceTypeId: string({
+/*       ServiceTypeId: string({
         required_error: "Service Type Id is required",
-      }),
+      }), */
       ServiceName: string({
         required_error: "Service Name is required"
       })

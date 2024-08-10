@@ -1,9 +1,9 @@
 import express from "express";
+import dotenv  from "dotenv"
 import helmet from "helmet";
 import config from "config";
 import connect from "./utils/connect";
 import logger from "./utils/logger";
-//import routes from "./routes";
 import swaggerDocs from "./utils/swagger";
 import { startMetricsServer } from "./utils/metrics";
 import  deserializeUser from "./middleware/deserializeUser";
@@ -11,8 +11,14 @@ import routes from "./api/routes";
 import cors from "cors";
 import ErrorHandler from "./middleware/errorHandler";
 
-const port = config.get<number>('serverPort');
+//const port = config.get<number>('serverPort');
 const app = express();
+
+if(process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
+
+const port = Number(process.env.SERVER_PORT);
 
 //use helmet
 app.use(helmet());
@@ -20,10 +26,9 @@ app.use(helmet());
 // Define the CORS options
 const corsOptions = {
   credentials: true,
-  origin: 'http://127.0.0.1:5173', 
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 };
-
 
 app.use(cors(corsOptions));
 
@@ -57,7 +62,7 @@ app.listen(port, async () => {
 
       app.use(ErrorHandler)
     
-      //startMetricsServer();
+      startMetricsServer();
 
       swaggerDocs(app, port);
 

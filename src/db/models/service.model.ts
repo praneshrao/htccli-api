@@ -9,7 +9,7 @@ export interface ServiceOutput extends Required<serviceAttributes> {}
 
 class Service extends Model<serviceAttributes, ServiceInput> implements serviceAttributes {
     public Id!: number
-    public ServiceTypeId!: number
+    public ServiceTypeID!: number
     public ServiceName!: string
     public Description!: string;
     public ServicePrice!: number
@@ -22,7 +22,7 @@ Service.init({
         type: DataTypes.NUMBER,
         allowNull: false
     },
-    ServiceTypeId: {
+    ServiceTypeID: {
         type: DataTypes.NUMBER,
         allowNull: false
     },
